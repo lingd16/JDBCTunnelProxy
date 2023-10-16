@@ -1,1 +1,1 @@
-java -cp . JDBCTunnelProxy
+java -cp . JDBCTunnelProxy localhost 3306

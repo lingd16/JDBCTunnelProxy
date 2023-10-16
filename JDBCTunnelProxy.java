@@ -8,8 +8,8 @@ public class JDBCTunnelProxy {
 
     public static void main(String[] args) {
         int proxyPort = 9090;
-        String databaseServer = "localhost";
-        int databasePort = 3306;
+        String databaseServer = args[0];
+        int databasePort = Integer.parseInt(args[1]);
 
         try (ServerSocket serverSocket = new ServerSocket(proxyPort)) {
             System.out.println("JDBC Proxy Server started on port " + proxyPort);
@@ -55,7 +55,7 @@ public class JDBCTunnelProxy {
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             } finally {
                 try {
                     sourceSocket.close();
