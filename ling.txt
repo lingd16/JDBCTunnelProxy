@@ -1,0 +1,13 @@
+        $("body").append('<iframe id="hidden-iframe" name="hidden-iframe" style="display:none;"></iframe>');
+        $("#myForm").attr("target", "hidden-iframe");
+        $("#myForm").submit();
+        $("#hidden-iframe").on('load', function () {
+            console.log(document.getElementById('hidden-iframe').contentWindow.location.pathname);
+            let iframeDocument = document.getElementById('hidden-iframe').contentWindow.document;
+            let iframeBody = $(iframeDocument).find('body').html();
+            let iframeHead = $(iframeDocument).find('head').html();
+            console.log(iframeBody);
+            console.log(iframeHead);
+            $('body').html(iframeBody);    
+            $('head').html(iframeHead);    
+        });
